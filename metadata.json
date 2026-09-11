@@ -1,0 +1,6 @@
+{
+  "name": "Reliabletech Record Keeping",
+  "description": "A comprehensive record keeping application for Reliabletech's services and suppliers in Fikkal, Ilam, with robust local storage management and offline export capabilities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

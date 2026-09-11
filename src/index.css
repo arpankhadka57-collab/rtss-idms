@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Base style resets */
+body {
+  font-family: var(--font-sans);
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Print media overrides to guarantee unified corporate letterhead compilation and exact color rendering */
+@media print {
+  @page {
+    size: auto;
+    margin: 10mm;
+  }
+
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    box-sizing: border-box !important;
+  }
+
+  html, body {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: static !important;
+  }
+
+  /* Completely hide purely screen-only elements from taking up layout space */
+  header.app-header, 
+  nav, 
+  footer.app-footer, 
+  aside,
+  button, 
+  .no-print, 
+  [no-print], 
+  .print-hidden, 
+  .print\:hidden,
+  .print-controls-panel,
+  .print-top-bar {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Reset all outer parent containers, fixed backdrops & modals to block layout */
+  #root, 
+  main, 
+  div.min-h-screen,
+  div[class*="min-h-screen"],
+  #app-layout-wrapper,
+  .fixed,
+  div[class*="fixed"] {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Force display and visibility of all letterhead wrappers and printable contents */
+  .corporate-letterhead-outer-wrapper,
+  #corporate-letterhead-printable,
+  #corporate-letterhead-system-preview,
+  #po-print-area,
+  #printable-area-receipt,
+  #nepali-letter-print-content,
+  #printable-release-slip,
+  #print-receipt-section,
+  #reports-tab,
+  #meeting-minutes-print-area,
+  #universal-print-paper-content,
+  .printable,
+  [data-printable],
+  [data-printable="true"] {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 275mm !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 9999999 !important;
+    page-break-before: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Force display and exact visibility for internal letterhead sections */
+  .corporate-letterhead-header,
+  .corporate-letterhead-main,
+  .corporate-letterhead-footer,
+  .corporate-letterhead-outer-wrapper *,
+  [data-printable="true"] * {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Preserve grid layout in corporate letterhead header */
+  .corporate-letterhead-header .grid {
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .corporate-letterhead-header .col-span-3 {
+    grid-column: span 3 / span 3 !important;
+  }
+
+  .corporate-letterhead-header .col-span-6 {
+    grid-column: span 6 / span 6 !important;
+  }
+
+  /* Ensure background images and watermark images print with exact graphics */
+  .corporate-letterhead-outer-wrapper img,
+  [data-printable="true"] img {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    max-width: 100% !important;
+    visibility: visible !important;
+    display: block !important;
+  }
+
+  /* Avoid breaking rows, paragraphs, images, and key layout blocks across page boundaries */
+  tr, img, p, blockquote, pre {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Manual page break helpers */
+  .page-break {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
